@@ -9,10 +9,8 @@
 <!ENTITY serverInfo.label "Sabnzbd server info :">
 <!ENTITY hostPref.label "IP/Host :">
 <!ENTITY portPref.label "Port :">
+<!ENTITY sslPref.label "Use SSL">
 <!ENTITY usernamePref.label "Username :">
 <!ENTITY passwordPref.label "Password :">
 <!ENTITY apiKeyPref.label "API Key :">
 <!ENTITY apiKeyPref.explain "(In sabnzb webpage, you can get it in &quot;Config&quot;->&quot;General&quot;)">
-
-
-
