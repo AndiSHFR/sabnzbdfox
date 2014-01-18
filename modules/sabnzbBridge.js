@@ -3,7 +3,7 @@ var EXPORTED_SYMBOLS = ["sabnzbBridge"];
 var sabnzbBridge = {};
 
 sabnzbBridge.getSabnzbUrl = function () {
-  return "http://"+this.prefs.getCharPref("host")+":"+this.prefs.getIntPref("port")+"/sabnzbd/";
+  return  (this.prefs.getBoolPref("ssl") ? 'https' : 'http' )+"://"+this.prefs.getCharPref("host")+":"+this.prefs.getIntPref("port")+"/sabnzbd/";
 }
 sabnzbBridge.getSabnzbUrlParams = function () {
   var user = this.prefs.getCharPref("username");
@@ -11,7 +11,7 @@ sabnzbBridge.getSabnzbUrlParams = function () {
   var params = "&apikey="+this.prefs.getCharPref("apikey");
   if (user && user.length>0)
     params += "&ma_username="+user;
-  if (password && password.length>0) 
+  if (password && password.length>0)
     params += "&ma_password="+password;
   return params;
 }
@@ -19,14 +19,14 @@ sabnzbBridge.getSabnzbUrlParams = function () {
 sabnzbBridge.sendToSabnzb = function (fileName, data) {
   var xmlhttp = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance();
   xmlhttp.QueryInterface(Components.interfaces.nsIXMLHttpRequest);
-  
+
   var d = new Date();
   var boundary = '--------' + d.getTime();
   var body = '--' + boundary + '\n';
   body += 'Content-Disposition: form-data; name="name"; filename="' + fileName + '"\n';
   body += 'Content-Type: application/octet-stream\n\n' + data + '\n';
   body += '--' + boundary +'--\n';
-  
+
   var url = this.getSabnzbUrl()+"api?mode=addfile&name="+fileName+this.getSabnzbUrlParams();
   xmlhttp.open('POST', url, true);
   xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
@@ -42,7 +42,7 @@ sabnzbBridge._init = function () {
                         getService(Components.interfaces.nsIPrefService);
   this.prefs = this.prefs.getBranch("extensions.sabnzbfox.");
   this._readPref();
-  
+
   this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
   this.prefs.addObserver("", this, false);
 }
@@ -62,7 +62,7 @@ function setInterval(action, delay) {
       .initWithCallback({ notify: action }, delay, Components.interfaces.nsITimer.TYPE_REPEATING_PRECISE);
   */
 }
- 
+
 function clearInterval(timer) {
   var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
   var win = wm.getMostRecentWindow("navigator:browser");
