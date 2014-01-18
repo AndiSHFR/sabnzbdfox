@@ -1,0 +1,16 @@
+<!ENTITY prefwindow.title "SabnzbdFox Einstellungen">
+<!ENTITY pane1.title "SabnzbdFox Einstellungen">
+<!ENTITY enabledPref.label "Aktiviert (NZB Dateien behandeln und die Anzahl der Aufträge anzeigen)">
+<!ENTITY action.label "Was soll mit NZB-Dateien geschehen?">
+<!ENTITY targetPref.label "In einen Ordner verschieben">
+<!ENTITY apiPref.label "Über die Web-API direkt an sabnzbd schicken">
+<!ENTITY apiPref.notice "Nicht vergessen den API Schlüssel aus sabnzbd unten einzutragen!">
+<!ENTITY targetPref.select "Ordner wählen...">
+<!ENTITY serverInfo.label "Sabnzbd Server Einstellungen:">
+<!ENTITY hostPref.label "IP/Computername :">
+<!ENTITY portPref.label "Port :">
+<!ENTITY sslPref.label "SSL verwenden">
+<!ENTITY usernamePref.label "Benutzername :">
+<!ENTITY passwordPref.label "Kennwort :">
+<!ENTITY apiKeyPref.label "API Schlüssel :">
+<!ENTITY apiKeyPref.explain "(In sabnzbd unter &quot;Config&quot;->&quot;General&quot; zu finden)">
